@@ -1,0 +1,22 @@
+# binaries
+dbman
+dist/
+/tmp/
+
+# test artifacts
+*.test
+*.out
+coverage.html
+
+# Go build cache (never commit)
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# local env overrides
+.env
