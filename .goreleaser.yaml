@@ -1,0 +1,28 @@
+# GoReleaser — release on version tags:  git tag v0.1.0 && git push origin v0.1.0
+version: 2
+
+project_name: dbman
+
+builds:
+  - main: .
+    binary: dbman
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    ldflags:
+      - -s -w -X github.com/muizzyranking/dbman/internal/cli.Version={{.Version}}
+
+archives:
+  - name_template: "dbman_{{ .Os }}_{{ .Arch }}{{ if eq .Os \"Windows\" }}.zip{{ else }}.tar.gz{{ end }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE
+      - README.md
+
+checksum:
+  name_template: checksums.txt
+
+release:
+  draft: false
+  generate_notes: true
